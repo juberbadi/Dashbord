@@ -1,0 +1,20 @@
+<div class="container border mt-5 pt-2 pb-2" >
+    <h2 class="border-bottom pb-2">Login</h2>
+    <form #usersForm="ngForm" (ngSubmit)="getUserFormData(usersForm.value)" >
+      
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="text" ngModel class="form-control" name="email" placeholder="exmaple@gmail.com" #email="ngModel" email required aria-describedby="emailHelp">
+        <span *ngIf="email.invalid && email.touched" style="color:red">Please enter a Valid Email</span>
+      </div>
+      
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Password</label>
+        <input type="password" ngModel class="form-control" name="password" placeholder="Example@123" required aria-describedby="emailHelp">
+      </div>
+      <!-- <span style="color:red">{{message}}</span> -->
+      <button routerLink="/sidekicks" class="btn btn-primary" [disabled]="usersForm.invalid">Login</button>
+    </form>
+    </div>
+    
+    

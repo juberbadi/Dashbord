@@ -1,0 +1,95 @@
+<!-- <ejs-toast #toasttype [position]="position"></ejs-toast> -->
+<div class="container border mt-5 pt-2 pb-2">
+  <h2 class="border-bottom pb-2">Registration</h2>
+  <form #usersForm="ngForm" (ngSubmit)="getUserFormData(usersForm.value)">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        placeholder="John Smith"
+        required
+        #name="ngModel"
+        minlength="3"
+        maxlength="20"
+        pattern="[a-zA-Z ]+$"
+        aria-describedby="emailHelp"
+        ngModel
+      />
+      <span *ngIf="name.invalid && name.touched" style="color: red"
+        >Please enter a Valid Name</span
+      >
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="text"
+        ngModel
+        class="form-control"
+        name="email"
+        #email="ngModel"
+        email
+        pattern="(\.?[a-z0-9]){1,}@g(oogle)?mail\.com$"
+        placeholder="exmaple@gmail.com"
+        required
+        aria-describedby="emailHelp"
+      />
+      <span *ngIf="email.invalid && email.touched" style="color: red"
+        >Please enter a Valid Email</span
+      >
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Phone Number</label>
+      <input
+        type="text"
+        ngModel
+        class="form-control"
+        name="phone"
+        mask="(000) 000-0000"
+        placeholder="(000) 000-0000"
+        required
+        #phone="ngModel"
+        pattern="[0-9]{10}$"
+        aria-describedby="emailHelp"
+      />
+      <span *ngIf="phone.invalid && phone.touched" style="color: red"
+        >Please enter a 10 digit valid phone number</span
+      >
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Password</label>
+      <input
+        type="password"
+        ngModel
+        class="form-control"
+        name="password"
+        #password="ngModel"
+        minlength="6"
+        maxlength="16"
+        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&])[A-Za-z\d@$#!%*?&]{6,}$"
+        placeholder="Example@123"
+        required
+        aria-describedby="emailHelp"
+      />
+      <span *ngIf="password.invalid && password.touched" style="color: red"
+        >Password should be Minimum six characters, at least one uppercase
+        letter, one lowercase letter, one number and one special character</span
+      >
+    </div>
+
+    <!-- <button routerLink="/sidekicks" (click)="successClick()" class="btn btn-primary" [disabled]="usersForm.invalid">Login</button> -->
+    <button
+      routerLink="/sidekicks"
+      class="btn btn-primary"
+      [disabled]="usersForm.invalid"
+    >
+      Registration
+    </button>
+  </form>
+  <p style="color: red">{{ message.message }}</p>
+  <!-- <form [formGroup]="aFormGroup">
+    <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha">
+    </ngx-recaptcha2>
+    </form> -->
+</div>

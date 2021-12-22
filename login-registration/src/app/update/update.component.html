@@ -1,0 +1,20 @@
+<div class="container border mt-5 pt-2 pb-2" >
+  <h2 class="border-bottom pb-2">Update Profile</h2>
+  <form #usersForm="ngForm" (ngSubmit)="updateUserFormData(usersForm.value)">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Name</label>
+      <input type="text" ngModel class="form-control" name="name" placeholder="John Smith"  aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="text" ngModel class="form-control" name="email" placeholder="exmaple@gmail.com"  aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Phone Number</label>
+      <input type="number" ngModel class="form-control" name="phone" placeholder="0000000000"  aria-describedby="emailHelp">
+    </div>
+    
+    <button class="btn btn-primary">Update</button>
+  </form>
+  </div>
+  
