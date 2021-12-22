@@ -39,28 +39,24 @@
 //     }
 // }
 
-const db_connection = require('../models/dbConnection').promise();
+const db_connection = require("../config/dbConnection").promise();
 exports.getUser = async (req, res, next) => {
+  try {
+    const [row] = await db_connection.execute(
+      "SELECT `id`,`name`,`email`,`phone` FROM `users` WHERE `id`=?",
+      [req.params.id]
+    );
 
-    try {
-
-        const [row] = await db_connection.execute(
-            "SELECT `id`,`name`,`email`,`phone` FROM `users` WHERE `id`=?",
-            [req.params.id]
-        );
-
-        if (row.length > 0) {
-            return res.json({
-                user: row[0]
-            });
-        }
-
-        res.json({
-            message: "No user found"
-        });
-
-    } catch (err) {
-        next(err);
+    if (row.length > 0) {
+      return res.json({
+        user: row[0],
+      });
     }
 
+    res.json({
+      message: "No user found",
+    });
+  } catch (err) {
+    next(err);
+  }
 };
